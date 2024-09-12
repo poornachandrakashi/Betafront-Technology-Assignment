@@ -1,19 +1,29 @@
 import pytest
+from fastapi.testclient import TestClient
+from run import app
 from apps.controllers.pokemon_controller import PokemonDataManager
+from apps.core.logger import logger
+
 
 @pytest.fixture
-def mock_pokemon_data(monkeypatch):
-    # Create mock Pokémon data
-    mock_data = {
-        "pikachu": {"name": "Pikachu", "type1": "electric", "type2": "", "attack": "55"},
-        "bulbasaur": {"name": "Bulbasaur", "type1": "grass", "type2": "poison", "attack": "49"}
-    }
+def client():
+    return TestClient(app)
 
-    # Create an instance of PokemonDataManager
-    instance = PokemonDataManager()
+@pytest.fixture
+def mock_pokemon_data_manager():
+    class MockPokemonDataManager(PokemonDataManager):
+        def __init__(self):
+            super().__init__()
+            logger.debug("===============================LINE 15")
+            self.load_pokemon_data() 
 
-    # Patch the instance's pokemon_data with mock data
-    monkeypatch.setattr(instance, 'pokemon_data', mock_data)
+        def load_pokemon_data(self):
+            super().load_pokemon_data()  
 
-    # Return the modified instance
-    return instance
+    return MockPokemonDataManager()
+
+@pytest.fixture(autouse=False)
+def override_pokemon_data_manager(mock_pokemon_data_manager):
+    app.dependency_overrides[PokemonDataManager] = lambda: mock_pokemon_data_manager
+    yield
+    app.dependency_overrides = {} 
