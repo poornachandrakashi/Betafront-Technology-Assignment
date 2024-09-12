@@ -1,12 +1,13 @@
 import pytest
 from apps.controllers.utilities.pokemon_util import calculate_damage
+from apps.models.pokemon_model import Pokemon  # Ensure you're importing the Pokemon model
 
-# Mock Pokémon data
+# Mock Pokémon data as instances of the Pokemon class
 @pytest.fixture
 def mock_pokemon_data():
     return {
-        "charmander": {"name": "Charmander", "type1": "fire", "type2": "", "attack": "52"},
-        "squirtle": {"name": "Squirtle", "against_fire": "0.5", "against_water": "2", "attack": "44"}
+        "charmander": Pokemon("Charmander", {"type1": "fire", "type2": "", "attack": "52"}),
+        "squirtle": Pokemon("Squirtle", {"against_fire": "0.5", "against_water": "2", "attack": "44"})
     }
 
 def test_calculate_damage(mock_pokemon_data):
