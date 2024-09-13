@@ -8,6 +8,23 @@ Retrieve battle results once the battle is completed using the battle id.
 The project involves loading Pokémon data from a CSV file downloaded from Kaggle dataset, running a simulation of battles based on Pokémon types and attack values, and returning results via API endpoints.
 
 
+## Challenges Faced in the Problem Statement
+
+1. **Spelling Mistake Verification**:  
+   Faced a challenge in verifying the spelling mistake criteria for Pokémon names as outlined in the document. I had to conduct research and combine two different approaches to achieve the solution effectively.
+
+2. **Mock Data Initialization**:  
+   Initializing mock data was somewhat tricky, as it led to issues when running the route test cases. Careful adjustments were required to ensure the tests ran successfully.
+
+3. **Asynchronous Implementation**:  
+   When implementing asynchronous functionality, I considered two approaches: 
+   - Celery with Redis
+   - Using threading
+  
+   However, I opted to use FastAPI's built-in asynchronous mechanism for a simpler and more efficient implementation.
+
+
+
 ## Low Level Design
 ```
 Client
@@ -69,6 +86,20 @@ Controller Module (Checks battle status)
 ```
 
 
+## UML diagram
+You can find the UML diagram in this link.
+
+```
+https://drive.google.com/file/d/18GDCBrXL4d2YSmNW-EClJroPrIAI3g-J/view?usp=sharing
+```
+
+
+## Postman Collection
+You can find the complete postman Collection in this link.
+
+```
+https://drive.google.com/file/d/1nojW5ZpBTuz1Wm7ZVsvtQnXgjW9U0GW0/view?usp=sharing
+```
 
 
 ## API Reference
@@ -112,7 +143,7 @@ To check the status of the battle.
 
 ## Running Pokémon Battle
 
-##prerequisities
+## Prerequisities
 * Python 3.8+
 * Pip
 * Git
@@ -121,12 +152,12 @@ To check the status of the battle.
 ### Clone the repository from github
 
 ```
-git clone 
+git clone git@github.com:poornachandrakashi/Betafront-Technology-Assignment.git
 ```
 ### Move to the directory and create virtualenv
 
 ```
-cd 
+cd Betafront-Technology-Assignment
 ```
 
 ```
@@ -177,9 +208,12 @@ Like the above , please set whatever is the path in your cmd line.
 
 Then run the below command.
 
+
 ```
 pytest --asyncio-mode=auto --cov=apps tests/
 ```
+
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
@@ -188,3 +222,5 @@ To run this project, you will need to add the following environment variables to
 ATTACK_DIVISOR = 200
 DAMAGE_MULTIPLIER = 100
 ```
+
+
