@@ -98,7 +98,7 @@ https://drive.google.com/file/d/18GDCBrXL4d2YSmNW-EClJroPrIAI3g-J/view?usp=shari
 You can find the complete postman Collection in this link.
 
 ```
-https://drive.google.com/file/d/1nojW5ZpBTuz1Wm7ZVsvtQnXgjW9U0GW0/view?usp=sharing
+https://drive.google.com/file/d/1y5Nx3nbqt44DwUsTR5ow6DXnGuidlRmj/view?usp=sharing
 ```
 
 
@@ -148,11 +148,16 @@ To check the status of the battle.
 * Pip
 * Git
 
+### Note :
+```
+Run the below commands on CMD (WINDOWS)
+```
+
 
 ### Clone the repository from github
 
 ```
-git clone git@github.com:poornachandrakashi/Betafront-Technology-Assignment.git
+git clone https://github.com/poornachandrakashi/Betafront-Technology-Assignment.git
 ```
 ### Move to the directory and create virtualenv
 
@@ -195,10 +200,26 @@ or
 python3 run.py
 ```
 
+
+## Now to test the api's manually you can either use Postman or Swagger directly on the browser.
+
+### To use on Postman
+1.**Load the Postman collection and run one by one**
+```
+https://drive.google.com/file/d/1y5Nx3nbqt44DwUsTR5ow6DXnGuidlRmj/view?usp=sharing
+```
+
+2.**You can directly load Swagger Document using below**
+```
+http://localhost:5001/docs
+```
+
+
 ## Unit Testing Pokémon Battle
 
 Set the project directory in the environment variable
 
+Run this in CMD
 ```
 set PYTHONPATH=C:\Poorna\Projects\Assignments\betfront-assignment
 ```

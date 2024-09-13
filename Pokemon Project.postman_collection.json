@@ -18,12 +18,12 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5000/api/pokemon/list_pokemons?page=10&limit=10",
+					"raw": "http://localhost:5001/api/pokemon/list_pokemons?page=17&limit=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "5001",
 					"path": [
 						"api",
 						"pokemon",
@@ -32,7 +32,7 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "10"
+							"value": "17"
 						},
 						{
 							"key": "limit",
@@ -60,7 +60,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"pokemon_a\": \"Arbok\",\r\n  \"pokemon_b\": \"squirtle\"\r\n}",
+					"raw": "{\r\n  \"pokemon_a\": \"hoothoot\",\r\n  \"pokemon_b\": \"hoothoot\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -96,7 +96,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5001/api/pokemon/battle/4acfa1d4-486b-43ec-a926-9d3aaa40737f",
+					"raw": "http://localhost:5001/api/pokemon/battle/c6b4c342-69e9-42a5-a56f-38ab3c3d7f7f",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -106,7 +106,7 @@
 						"api",
 						"pokemon",
 						"battle",
-						"4acfa1d4-486b-43ec-a926-9d3aaa40737f"
+						"c6b4c342-69e9-42a5-a56f-38ab3c3d7f7f"
 					]
 				},
 				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5000/api/pokemon/battle/1ce3a7cd-2b61-4e6c-8a2d-202a864fb0c7' \\\r\n  -H 'accept: application/json'"
