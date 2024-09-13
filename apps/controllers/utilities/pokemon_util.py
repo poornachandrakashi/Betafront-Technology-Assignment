@@ -27,3 +27,34 @@ def calculate_damage(pokemon_a: Pokemon, pokemon_b: Pokemon) -> float:
 
     damage = (attack_a / attack_divisor) * damage_multiplier - damage_reduction
     return max(damage, 0.0)  
+
+# def check_spelling(string1, string2):
+#     string1 = string1.lower()
+#     string2 = string2.lower()
+    
+#     if abs(len(string1) - len(string2)) > 1:
+#         return False
+    
+#     i, j = 0, 0
+#     differences = 0
+    
+#     while i < len(string1) and j < len(string2):
+#         if string1[i] != string2[j]:
+#             differences += 1
+#             if differences > 1:
+#                 return False
+#             if len(string1) > len(string2):
+#                 i += 1
+#             elif len(string2) > len(string1):
+#                 j += 1
+#             else:
+#                 i += 1
+#                 j += 1
+#         else:
+#             i += 1
+#             j += 1
+
+#     if i < len(string1) or j < len(string2):
+#         differences += 1
+
+#     return differences <= 1

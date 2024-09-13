@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug pytest",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tests",  // Change this to the directory where your tests are located
+            "module": "pytest",
+            "justMyCode": false,  // Set to false to allow debugging into libraries
+            "args": ["-s"],  // Optional: -s is used to capture stdout
+            "console": "integratedTerminal",  // This allows interactive debugging
+            "env": { "PYTHONPATH": "${workspaceFolder}" },  // Set environment variables if needed
+            "cwd": "${workspaceFolder}"  // Change this to the root of your project
+        }
+    ]
+}

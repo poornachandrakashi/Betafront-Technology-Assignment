@@ -19,7 +19,7 @@ def client(pokemon_data_manager):
 class TestPokemonRoutes:
 
     def test_list_pokemons(self, client):
-        response = client.get("/api/pokemon/list_pokemons?page=1&limit=5")
+        response = client.get("/api/pokemon/list_pokemons?page=1&limit=20")
         assert response.status_code == 200
         pokemons = response.json().get("pokemons", [])
         assert len(pokemons) > 0  

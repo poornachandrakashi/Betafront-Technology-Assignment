@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "53d29ffc-e4f2-4221-a1f1-5dbdb58f6e88",
+		"name": "Pokemon Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31531338",
+		"_collection_link": "https://performance-docs-979701.postman.co/workspace/New-Team-Workspace~f2763c96-2ad7-40e2-801e-be9356b1bee8/collection/31531338-53d29ffc-e4f2-4221-a1f1-5dbdb58f6e88?action=share&source=collection_link&creator=31531338"
+	},
+	"item": [
+		{
+			"name": "List Pokemon Names",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/pokemon/list_pokemons?page=10&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"pokemon",
+						"list_pokemons"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "10"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5000/api/pokemon/list_pokemons?page=1&limit=10' \\\r\n  -H 'accept: application/json'"
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate Battle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pokemon_a\": \"Arbok\",\r\n  \"pokemon_b\": \"squirtle\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/pokemon/battle/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"pokemon",
+						"battle",
+						""
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:5000/api/pokemon/battle/' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"pokemon_a\": \"charmander\",\r\n  \"pokemon_b\": \"caterpie\"\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Battle Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/pokemon/battle/4acfa1d4-486b-43ec-a926-9d3aaa40737f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"pokemon",
+						"battle",
+						"4acfa1d4-486b-43ec-a926-9d3aaa40737f"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5000/api/pokemon/battle/1ce3a7cd-2b61-4e6c-8a2d-202a864fb0c7' \\\r\n  -H 'accept: application/json'"
+			},
+			"response": []
+		}
+	]
+}

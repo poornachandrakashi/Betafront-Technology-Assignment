@@ -43,6 +43,7 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+spellingcheck.py
 nosetests.xml
 coverage.xml
 *.cover

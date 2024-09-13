@@ -166,6 +166,17 @@ python3 run.py
 
 ## Unit Testing Pokémon Battle
 
+Set the project directory in the environment variable
+
+```
+set PYTHONPATH=C:\Poorna\Projects\Assignments\betfront-assignment
+```
+
+Like the above , please set whatever is the path in your cmd line.
+
+
+Then run the below command.
+
 ```
 pytest --asyncio-mode=auto --cov=apps tests/
 ```
@@ -177,5 +188,3 @@ To run this project, you will need to add the following environment variables to
 ATTACK_DIVISOR = 200
 DAMAGE_MULTIPLIER = 100
 ```
-
-
