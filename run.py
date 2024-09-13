@@ -28,5 +28,6 @@ port_number = int(os.getenv("PORT", 10000))
 if __name__ == "__main__":
     uvicorn.run(
         "run:app",
+        host = "0.0.0.0",
         port=port_number
     )
