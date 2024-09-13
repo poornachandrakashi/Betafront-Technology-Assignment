@@ -5,14 +5,15 @@ from typing import Dict, List, Optional
 from fastapi import BackgroundTasks, HTTPException
 from apps.controllers.utilities.pokemon_util import calculate_damage, check_spelling
 from apps.core.logger import logger
+from apps.core.util import response_json
 from apps.models.pokemon_model import Pokemon
+from fuzzywuzzy import process
 
 class BattleResult:
     def __init__(self, battle_id: str):
         self.battle_id = battle_id
         self.status = "BATTLE_INPROGRESS"
         self.result = None
-
     def set_completed(self, winner: str, margin: float):
         self.status = "BATTLE_COMPLETED"
         self.result = {"winnerName": winner, "wonByMargin": margin}
@@ -81,57 +82,31 @@ class BattleSimulator:
     def start_battle(self, pokemon_a_name: str, pokemon_b_name: str, pokemon_data_manager: PokemonDataManager, background_tasks: BackgroundTasks):
         battle_id = str(uuid.uuid4())
 
-        logger.debug(pokemon_a_name)
+        def fuzzy_match_pokemon(name):
+            matches = process.extract(name, pokemon_data_manager.pokemon_data.keys(), limit=3)
+            exact_match = next((match for match in matches if match[1] == 100), None)
+            if exact_match:
+                return pokemon_data_manager.get_pokemon(exact_match[0])
+            
+            close_matches = [match for match in matches if match[1] >= 80]
+            if len(close_matches) == 1:
+                logger.info(f"Accepted close match: {close_matches[0][0]} for input {name}")
+                if check_spelling(close_matches[0][0],name):
+                    return pokemon_data_manager.get_pokemon(close_matches[0][0])
+        
+            return response_json({},f"Invalid Pokémon name : {name}",400)
 
-        logger.debug(pokemon_b_name)
-        pokemon_a = pokemon_data_manager.get_pokemon(pokemon_a_name)
-        pokemon_b = pokemon_data_manager.get_pokemon(pokemon_b_name)
+        pokemon_a = fuzzy_match_pokemon(pokemon_a_name)
+        pokemon_b = fuzzy_match_pokemon(pokemon_b_name)
 
-
-        logger.debug(pokemon_a)
-
-        logger.debug("======================================LINE 88")
-        if not pokemon_a or not pokemon_b:
-            raise HTTPException(status_code=400, detail="Invalid Pokémon name")
+        logger.debug(f"Matched Pokemon A: {pokemon_a}")
+        logger.debug(f"Matched Pokemon B: {pokemon_b}")
 
         battle_result = BattleResult(battle_id)
         self.battle_results[battle_id] = battle_result
 
         background_tasks.add_task(self.simulate_battle, pokemon_a, pokemon_b, battle_id)
         return battle_id
-
-    # def start_battle(self, pokemon_a_name: str, pokemon_b_name: str, pokemon_data_manager: PokemonDataManager, background_tasks: BackgroundTasks):
-    #     battle_id = str(uuid.uuid4())
-    #     from fuzzywuzzy import process
-    #     def fuzzy_match_pokemon(name):
-    #         matches = process.extract(name, pokemon_data_manager.pokemon_data.keys(), limit=3)
-    #         exact_match = next((match for match in matches if match[1] == 100), None)
-    #         if exact_match:
-    #             return pokemon_data_manager.get_pokemon(exact_match[0])
-            
-    #         close_matches = [match for match in matches if match[1] >= 80]
-    #         if len(close_matches) == 1:
-    #             logger.info(f"Accepted close match: {close_matches[0][0]} for input {name}")
-    #             if check_spelling(close_matches[0][0],name):
-    #                 return pokemon_data_manager.get_pokemon(close_matches[0][0])
-                
-    #         raise HTTPException(status_code=400, detail="Invalid Pokémon name")
-
-    #     pokemon_a = fuzzy_match_pokemon(pokemon_a_name)
-    #     pokemon_b = fuzzy_match_pokemon(pokemon_b_name)
-
-    #     logger.debug(f"Matched Pokemon A: {pokemon_a}")
-    #     logger.debug(f"Matched Pokemon B: {pokemon_b}")
-
-    #     logger.debug("======================================LINE 88")
-    #     # if not pokemon_a or not pokemon_b:
-    #     #     raise HTTPException(status_code=400, detail="Invalid Pokémon name")
-
-    #     battle_result = BattleResult(battle_id)
-    #     self.battle_results[battle_id] = battle_result
-
-    #     background_tasks.add_task(self.simulate_battle, pokemon_a, pokemon_b, battle_id)
-    #     return battle_id
 
     def get_battle_result(self, battle_id: str) -> Dict:
         result = self.battle_results.get(battle_id)

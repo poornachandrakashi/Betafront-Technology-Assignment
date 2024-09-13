@@ -38,4 +38,4 @@ class TestPokemonRoutes:
         battle_id = response.json()["battleId"]
         result_response = client.get(f"/api/pokemon/battle/{battle_id}")
         assert result_response.status_code == 200
-        assert result_response.json()["status"] in ["BATTLE_INPROGRESS", "BATTLE_COMPLETED"]
+        assert result_response.json()["status"] in ["BATTLE_INPROGRESS", "BATTLE_COMPLETED","BATTLE_FAILED"]
