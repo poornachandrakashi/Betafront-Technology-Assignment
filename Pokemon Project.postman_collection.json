@@ -18,12 +18,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5001/api/pokemon/list_pokemons?page=17&limit=10",
-					"protocol": "http",
+					"raw": "https://betafront-technology-assignment.onrender.com/api/pokemon/list_pokemons?page=17&limit=10",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"betafront-technology-assignment",
+						"onrender",
+						"com"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"pokemon",
@@ -68,12 +69,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5001/api/pokemon/battle/",
-					"protocol": "http",
+					"raw": "https://betafront-technology-assignment.onrender.com/api/pokemon/battle/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"betafront-technology-assignment",
+						"onrender",
+						"com"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"pokemon",
@@ -96,17 +98,18 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5001/api/pokemon/battle/c6b4c342-69e9-42a5-a56f-38ab3c3d7f7f",
-					"protocol": "http",
+					"raw": "https://betafront-technology-assignment.onrender.com/api/pokemon/battle/fe2335f7-12da-4465-afe5-a1caa99c73ea",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"betafront-technology-assignment",
+						"onrender",
+						"com"
 					],
-					"port": "5001",
 					"path": [
 						"api",
 						"pokemon",
 						"battle",
-						"c6b4c342-69e9-42a5-a56f-38ab3c3d7f7f"
+						"fe2335f7-12da-4465-afe5-a1caa99c73ea"
 					]
 				},
 				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://localhost:5000/api/pokemon/battle/1ce3a7cd-2b61-4e6c-8a2d-202a864fb0c7' \\\r\n  -H 'accept: application/json'"

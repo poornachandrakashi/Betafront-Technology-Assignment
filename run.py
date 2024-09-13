@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 import uvicorn
 from fastapi import FastAPI
@@ -22,8 +23,10 @@ app.include_router(pokemon_router, tags=["POKEMON ROUTES"])
 async def root():
     return {"message": "Hello from home"}
 
+port_number = int(os.getenv("PORT", 10000))
+
 if __name__ == "__main__":
     uvicorn.run(
         "run:app",
-        port=5001
+        port=port_number
     )

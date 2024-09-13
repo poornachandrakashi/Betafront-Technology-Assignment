@@ -98,7 +98,7 @@ https://drive.google.com/file/d/18GDCBrXL4d2YSmNW-EClJroPrIAI3g-J/view?usp=shari
 You can find the complete postman Collection in this link.
 
 ```
-https://drive.google.com/file/d/1y5Nx3nbqt44DwUsTR5ow6DXnGuidlRmj/view?usp=sharing
+https://drive.google.com/file/d/1mIS41Yl1McU2sT2E3i_YYSVumssCoXBu/view?usp=sharing
 ```
 
 
@@ -206,7 +206,7 @@ python3 run.py
 ### To use on Postman
 1.**Load the Postman collection and run one by one**
 ```
-https://drive.google.com/file/d/1y5Nx3nbqt44DwUsTR5ow6DXnGuidlRmj/view?usp=sharing
+https://drive.google.com/file/d/1mIS41Yl1McU2sT2E3i_YYSVumssCoXBu/view?usp=sharing
 ```
 
 2.**You can directly load Swagger Document using below**
